@@ -1,3 +1,5 @@
+# This project created by Enadream, enadream.com
+
 class BasicOperations:
     def _addition(self, num1, num2):  # protected
         result = "error"
