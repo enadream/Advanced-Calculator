@@ -5,7 +5,7 @@ class BasicOperations:
         result = "error"
         try:
             result = str(float(num1) + float(num2))
-        except:
+        except TypeError:
             Console.PrintError(2)
         return result
 
@@ -13,7 +13,7 @@ class BasicOperations:
         result = "error"
         try:
             result = str(float(num1) - float(num2))
-        except:
+        except TypeError:
             Console.PrintError(2)
         return result
 
@@ -21,7 +21,7 @@ class BasicOperations:
         result = "error"
         try:
             result = str(float(num1) * float(num2))
-        except:
+        except TypeError:
             Console.PrintError(2)
         return result
 
@@ -29,7 +29,7 @@ class BasicOperations:
         result = "error"
         try:
             result = str(float(num1) / float(num2))
-        except:
+        except TypeError:
             Console.PrintError(2)
         return result
 
@@ -37,7 +37,7 @@ class BasicOperations:
         result = "error"
         try:
             result = str(float(num1) ** float(num2))
-        except:
+        except TypeError:
             Console.PrintError(2)
         return result
 
@@ -45,7 +45,7 @@ class BasicOperations:
         result = "error"
         try:
             result = str(float(num1) % float(num2))
-        except:
+        except TypeError:
             Console.PrintError(2)
         return result
 
@@ -98,6 +98,7 @@ class Calculator(BasicOperations):
         self.Result = 0.0
 
     def GetString(self):
+        Console.errorStatus = False
         print("\nEnter the operation you want to calculate: ")
         self.MainStr = str(input())
         self.__checkString(self.MainStr)
@@ -157,6 +158,7 @@ class Calculator(BasicOperations):
             print("\n[RESULT] : " + str(self.Result))
         else:
             print("\n[RESULT] : error")
+            Console.errorStatus = False
 
     # Finding operations and numbers in the string
     def __extraction(self, subString):
@@ -329,7 +331,7 @@ while True:
     print("__________________________________________________")
     print("\nDo you want to do a new calculation ? (\"y\":yes, \"n\":no) : ", end="")
     cont = str(input())
-    if cont[0] == "y" or cont == "Y" or cont == "yes":
+    if cont == "y" or cont == "Y" or cont == "yes":
         pass
     else:
         break
